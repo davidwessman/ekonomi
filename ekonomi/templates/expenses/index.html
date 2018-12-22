@@ -1,0 +1,18 @@
+{% extends 'expenses/base.html' %}
+
+{% block title %}
+    <h1>Expenses</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="">
+        <h2>Utlägg</h2>
+    </div>
+    <div class="p-4">
+        <ul>
+            {% for expense in expense_list %}
+                <li><a href="{% url 'detail' expense.id %}">{{ expense }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
