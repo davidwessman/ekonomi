@@ -1,0 +1,12 @@
+{% extends 'expenses/base.html' %}
+
+{% block content %}
+<h2>
+    {{ expense }}
+</h2>
+
+<form action="" method="post" class="mt-auto">
+    {% csrf_token %}
+    <input class="p-2 bg-white text-blue hover:bg-grey hover:text-white rounded" name="delete" type="submit" value="Ta bort"/>
+</form>
+{% endblock %}

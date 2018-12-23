@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class Expense(models.Model):
     title = models.CharField(max_length=200)
@@ -9,3 +10,6 @@ class Expense(models.Model):
 
     def __str__(self):
         return "{} - {} kr, {:%Y-%m-%d}".format(self.title, self.amount, self.transaction_date)
+
+    def get_absolute_url(self):
+        return reverse('expense-update', kwargs={'pk': self.pk})

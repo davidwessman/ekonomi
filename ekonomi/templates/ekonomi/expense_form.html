@@ -1,0 +1,41 @@
+{% extends 'expenses/base.html' %}
+
+{% block content %}
+<h2>
+    {{ expense }}
+</h2>
+
+<div class="flex justify-between">
+    <form method="post" class="w-full" novalidate>
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        {{ form.source.errors }}
+        {{ form.source }}
+        <div class="mb-4">
+            <div class="block text-grey-darker text-sm font-bold mb-2">
+                {{ form.title.label_tag }}
+            </div>
+            {{ form.title }}
+        </div>
+        <div class="mb-4">
+            <div class="block text-grey-darker text-sm font-bold mb-2">
+                {{ form.amount.label_tag }}
+            </div>
+            {{ form.amount }}
+        </div>
+        <div class="mb-4">
+            <div class="block text-grey-darker text-sm font-bold mb-2">
+                {{ form.transaction_date.label_tag }}
+            </div>
+            {{ form.transaction_date }}
+        </div>
+        <input type="submit" value="Save" class="p-2 bg-blue text-white hover:bg-blue-dark rounded">
+    </form>
+    <div class="mt-auto">
+        <a href="{% url 'expense-delete' expense.id %}" class="p-2 bg-white text-blue hover:bg-grey hover:text-white rounded">
+            Ta bort
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -20,8 +20,8 @@ from . import views
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path('<int:pk>/', views.DetailView.as_view(), name='detail'),
-    path('<int:pk>/results', views.ResultsView.as_view(), name='results'),
-    path('<int:expense_id>/create/', views.create, name='create'),
+    path('expense/add', views.ExpenseCreate.as_view(), name='expense-add'),
+    path('expense/<int:pk>/', views.ExpenseUpdate.as_view(), name='expense-update'),
+    path('expense/<int:pk>/delete', views.ExpenseDelete.as_view(), name='expense-delete'),
     path('admin/', admin.site.urls)
 ]

@@ -11,7 +11,7 @@
     <div class="p-4">
         <ul>
             {% for expense in expense_list %}
-                <li><a href="{% url 'detail' expense.id %}">{{ expense }}</a></li>
+                <li><a href="{% url 'expense-update' expense.id %}">{{ expense }}</a></li>
             {% endfor %}
         </ul>
     </div>
