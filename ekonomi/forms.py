@@ -1,4 +1,5 @@
-from django import forms
+"""
+Defines all form objects in the application
+"""
 
-class ExpenseForm(forms.ModelForm):
-    title = forms.CharField(label="Titel", max_length=200)
+from django import forms

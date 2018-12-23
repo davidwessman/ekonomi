@@ -32,10 +32,12 @@
         </div>
         <input type="submit" value="Save" class="p-2 bg-blue text-white hover:bg-blue-dark rounded">
     </form>
-    <div class="mt-auto">
-        <a href="{% url 'expense-delete' expense.id %}" class="p-2 bg-white text-blue hover:bg-grey hover:text-white rounded">
-            Ta bort
-        </a>
-    </div>
+    {% if expense.id %}
+        <div class="mt-auto">
+            <a href="{% url 'expense-delete' expense.id %}" class="p-2 bg-white text-blue hover:bg-grey hover:text-white rounded">
+                Ta bort
+            </a>
+        </div>
+    {% endif %}
 </div>
 {% endblock %}

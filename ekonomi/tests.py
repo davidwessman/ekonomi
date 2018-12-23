@@ -1,8 +1,7 @@
-import datetime
-
+from datetime import datetime, timezone
 from django.test import TestCase
 from django.urls import reverse
-from datetime import datetime
+
 from .models import Expense
 
 def create_expense(title, amount, days):
