@@ -1,3 +1,8 @@
+"""
+View-objects in application
+"""
+
+from django.db.models import Sum
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView, ListView
@@ -10,6 +15,11 @@ class IndexView(ListView):
     def get_queryset(self):
         """Return the last five published questions."""
         return Expense.objects.order_by('-transaction_date')[:5]
+
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context['sum'] = context['expense_list'].aggregate(Sum('amount'))['amount__sum']
+        return context
 
 
 class ExpenseDetail(DetailView):
