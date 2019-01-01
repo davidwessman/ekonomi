@@ -1,0 +1,33 @@
+{% extends 'ekonomi/base.html' %}
+
+{% block content %}
+    <div class="">
+        <h2>Uppladdningar</h2>
+    </div>
+    <div class="p-4">
+        <table class="table-auto w-full border-black">
+            <thead class="bg-blue text-white text-left">
+                <tr class="border-b">
+                    <th class="p-2" scope="col">Fil</th>
+                    <th class="p-2" scope="col">Typ</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for upload in upload_list %}
+                    <tr class="border-black border-b border-l">
+                        <td class="border-black border-r p-2">
+                            <a href="{% url 'upload-update' upload.id %}">{{ upload.file }}</a>
+                        </td>
+                        <td class="border-black border-r p-2">{{ upload.kind }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="mt-6">
+            <a href="{% url 'upload-create' %}"
+               class="p-2 bg-white text-blue hover:bg-grey hover:text-white rounded">
+                Ladda upp ny fil
+            </a>
+        </div>
+    </div>
+{% endblock %}

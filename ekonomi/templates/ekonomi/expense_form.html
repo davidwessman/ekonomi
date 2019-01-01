@@ -1,12 +1,12 @@
-{% extends 'expenses/base.html' %}
+{% extends 'ekonomi/base.html' %}
 
 {% block content %}
 <h2>
-    {{ expense }}
+    Utgift
 </h2>
 
-<div class="flex justify-between">
-    <form method="post" class="w-full" novalidate>
+<div class="flex justify-between ">
+    <form method="post" class="w-full pt-3" novalidate>
         {% csrf_token %}
         {{ form.non_field_errors }}
 
@@ -40,4 +40,11 @@
         </div>
     {% endif %}
 </div>
+{% if expense.id %}
+    <div class="mt-auto">
+        <a href="{% url 'expense-delete' expense.id %}" class="p-2 bg-white text-blue hover:bg-grey hover:text-white rounded">
+            Ta bort
+        </a>
+    </div>
+{% endif %}
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'expenses/base.html' %}
+{% extends 'ekonomi/base.html' %}
 
 {% block title %}
     <h1>Expenses</h1>
@@ -8,7 +8,7 @@
     <div class="">
         <h2>Utlägg</h2>
     </div>
-    <div class="p-4">
+    <div class="pt-4">
         <table class="table-auto w-full border-black">
             <thead class="bg-blue text-white text-left">
                 <tr class="border-b">
@@ -34,5 +34,11 @@
                 </tr>
             </tbody>
         </table>
+        <div class="mt-6">
+            <a href="{% url 'expense-create' %}"
+               class="p-2 bg-white text-blue hover:bg-grey hover:text-white rounded">
+                Lägg till utgift
+            </a>
+        </div>
     </div>
 {% endblock %}

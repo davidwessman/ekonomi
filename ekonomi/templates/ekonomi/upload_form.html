@@ -1,0 +1,39 @@
+{% extends 'ekonomi/base.html' %}
+
+{% block content %}
+<h2>
+    Filer med utlägg
+</h2>
+
+<div class="flex justify-between">
+    <form method="post" enctype="multipart/form-data" class="w-full pt-3">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        {{ form.source.errors }}
+        {{ form.source }}
+        <div class="mb-4">
+            <div class="block text-grey-darker text-sm font-bold mb-2">
+                {{ form.kind.label_tag }}
+            </div>
+            {{ form.kind.errors }}
+            {{ form.kind }}
+        </div>
+        <div class="mb-4">
+            <div class="block text-grey-darker text-sm font-bold mb-2">
+                {{ form.file.label_tag }}
+            </div>
+            {{ form.file.errors }}
+            {{ form.file }}
+        </div>
+        <input type="submit" value="Save" class="p-2 bg-blue text-white hover:bg-blue-dark rounded">
+    </form>
+    {% if upload.id %}
+        <div class="mt-auto">
+            <a href="{% url 'upload-delete' upload.id %}" class="p-2 bg-white text-blue hover:bg-grey hover:text-white rounded">
+                Ta bort
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

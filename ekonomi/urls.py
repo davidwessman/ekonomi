@@ -15,13 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 from . import views
 
-urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('expense/add', views.ExpenseCreate.as_view(), name='expense-add'),
+urlpatterns = [ # pylint: disable=C0103
+    path('', views.ExpenseIndex.as_view(), name='root'),
+    path('expense', views.ExpenseIndex.as_view(), name='expense-list'),
+    path('expense/add', views.ExpenseCreate.as_view(), name='expense-create'),
     path('expense/<int:pk>/', views.ExpenseUpdate.as_view(), name='expense-update'),
     path('expense/<int:pk>/delete', views.ExpenseDelete.as_view(), name='expense-delete'),
+    path('upload', views.UploadIndex.as_view(), name='upload-list'),
+    path('upload/add', views.UploadCreate.as_view(), name='upload-create'),
+    path('upload/<int:pk>/', views.UploadUpdate.as_view(), name='upload-update'),
+    path('upload/<int:pk>/delete', views.UploadDelete.as_view(), name='upload-delete'),
     path('admin/', admin.site.urls)
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

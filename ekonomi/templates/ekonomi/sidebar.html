@@ -1,0 +1,28 @@
+<div class="px-4 text-center text-grey-lighter">
+    <div class="w-full mb-6 text-center text-black">
+        <h3>Välkommen</h3><br>
+        <h4>{{ 'David Wessman' }}</h4>
+    </div>
+    <div class="w-full text-center mt-8">
+        <ul class="list-reset">
+            <li class="">
+                <a href="{% url 'root' %}"
+                   class="inline-block border-t w-full py-4 font-semibold text-blue no-underline">
+                    Startsida
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'expense-list' %}"
+                   class="inline-block border-t w-full py-4 font-semibold text-blue no-underline">
+                    Utlägg
+                </a>
+            </li>
+            <li class="">
+                <a href="{% url 'upload-list' %}"
+                   class="inline-block border-t w-full py-4 font-semibold text-blue no-underline">
+                    Uppladdningar
+                </a>
+            </li>
+        </ul>
+    </div>
+</div> 
