@@ -9,31 +9,7 @@
         <h2>Utlägg</h2>
     </div>
     <div class="pt-4">
-        <table class="table-auto w-full border-black">
-            <thead class="bg-blue text-white text-left">
-                <tr class="border-b">
-                    <th class="p-2" scope="col">Titel</th>
-                    <th class="p-2" scope="col">Belopp</th>
-                    <th class="p-2" scope="col">Datum</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for expense in expense_list %}
-                    <tr class="border-black border-b border-l">
-                        <td class="border-black border-r p-2">
-                            <a href="{% url 'expense-update' expense.id %}">{{ expense.title }}</a>
-                        </td>
-                        <td class="border-black border-r p-2">{{ expense.transaction_date }}</td>
-                        <td class="border-black border-r p-2">{{ expense.amount }}</td>
-                    </tr>
-                {% endfor %}
-                <tr class="border-black border-b border-l">
-                    <td></td>
-                    <td></td>
-                    <td class="border-black border-r p-2">{{ sum }} kr</td>
-                </tr>
-            </tbody>
-        </table>
+        {% include "ekonomi/expense_table.html" with expense_list=expense_list sum=sum %}
         <div class="mt-6">
             <a href="{% url 'expense-create' %}"
                class="p-2 bg-white text-blue hover:bg-grey hover:text-white rounded">

@@ -18,7 +18,7 @@
                         <td class="border-black border-r p-2">
                             <a href="{% url 'upload-update' upload.id %}">{{ upload.file }}</a>
                         </td>
-                        <td class="border-black border-r p-2">{{ upload.kind }}</td>
+                        <td class="border-black border-r p-2">{{ upload.get_kind_display }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

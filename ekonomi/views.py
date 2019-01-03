@@ -13,7 +13,7 @@ class ExpenseIndex(ListView):
     model = Expense
     def get_queryset(self):
         """Return the last five published questions."""
-        return Expense.objects.order_by('-transaction_date')[:5]
+        return Expense.objects.order_by('-transaction_date')
 
     def get_context_data(self, **kwargs):
         context = super(ExpenseIndex, self).get_context_data(**kwargs)
@@ -45,20 +45,6 @@ class UploadCreate(CreateView):
         print(request.POST)
         print(request.FILES)
         return super(UploadCreate, self).post(request, *args, **kwargs)
-
-    def form_valid(self, form):
-        valid = super(UploadCreate, self).form_valid(form)
-        if self.request.POST.get('file'):
-            file = form.cleaned_data['file']
-            print(file)
-        else:
-            print('Wohoo')
-        form.save()
-        return valid
-
-    def form_invalid(self, form):
-        print('Form invalid')
-        return super(UploadCreate, self).form_invalid(form)
 
 
 class UploadUpdate(UpdateView):

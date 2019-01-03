@@ -36,4 +36,12 @@
         </div>
     {% endif %}
 </div>
+{% if upload.id %}
+    <div class="pt-3">
+        <h3>Utlägg</h3>
+        <div class="pt-3">
+            {% include "ekonomi/expense_table.html" with expense_list=upload.expenses %}
+        </div>
+    </div>
+{% endif %}
 {% endblock %}
