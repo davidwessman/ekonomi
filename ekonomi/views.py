@@ -3,11 +3,28 @@ View-objects in application
 """
 
 from django.db.models import Sum
+from django.db.models.functions import ExtractMonth, ExtractYear
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
 
 from .models import Expense, Upload
+
+class ExpenseSummary(ListView):
+    template_name = 'ekonomi/expense_summary.html'
+    model = Expense
+
+
+    def get_queryset(self):
+        expenses = Expense.objects \
+                          .order_by('-transaction_date') \
+                          .annotate(month=ExtractMonth('transaction_date'),
+                                    year=ExtractYear('transaction_date')) \
+                          .values('month', 'year') \
+                          .annotate(sum=Sum('amount')) \
+                          .order_by()
+        return expenses
+
 
 class ExpenseIndex(ListView):
     model = Expense

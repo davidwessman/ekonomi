@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [ # pylint: disable=C0103
-    path('', views.ExpenseIndex.as_view(), name='root'),
+    path('', views.ExpenseSummary.as_view(), name='root'),
     path('expense', views.ExpenseIndex.as_view(), name='expense-list'),
     path('expense/add', views.ExpenseCreate.as_view(), name='expense-create'),
     path('expense/<int:pk>/', views.ExpenseUpdate.as_view(), name='expense-update'),

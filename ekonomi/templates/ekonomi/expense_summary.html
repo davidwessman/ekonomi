@@ -1,0 +1,29 @@
+{% extends 'ekonomi/base.html' %}
+
+{% block title %}
+    <h1>Expenses</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="">
+        <h2>Utlägg</h2>
+    </div>
+    <div class="pt-4">
+        <table class="table-auto w-full border-black">
+            <thead class="bg-blue text-white text-left">
+                <tr class="border-b">
+                    <th class="p-2" scope="col">Månad</th>
+                    <th class="p-2" scope="col">Summa</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in expense_list %}
+                    <tr class="border-black border-b border-l">
+                        <td class="border-black border-r p-2">{{ row.year }}-{{ row.month|stringformat:"02d" }}</td>
+                        <td class="border-black border-r p-2">{{ row.sum|floatformat:1 }} kr</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
